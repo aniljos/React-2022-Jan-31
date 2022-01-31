@@ -1,6 +1,7 @@
 Training Program on [React]
 
 
+
 1. Essential JavaScript for React
 2. Introduction to React
 3. Creating React Applications
@@ -15,6 +16,16 @@ Training Program on [React]
 12. Securing Applications
 13. Unit Testing
 14. Deployment
+
+### Commands
+
+1. Create Application: npm create-react-app the-awesome-app
+2. Start Application: npm start
+
+### Repositories
+
+1. Angular APP: https://github.com/aniljos/React-2022-Jan-31
+   
 
 
 
