@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Hello from './components/Hello';
+import Counter from './components/Counter';
 
 function App() {
   return (
@@ -20,8 +21,11 @@ function App() {
         </a>
       </header>
       <section>
-          <Hello message="React"/>
-          <Hello message="JSX"/>
+          {/* <Hello message="React"/>
+          <Hello message="JSX"/> */}
+
+          <Counter title="The Count"/>
+          <Counter title="Numbers"/>
           
       </section>
       <footer>
