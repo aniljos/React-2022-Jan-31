@@ -19,7 +19,7 @@ Training Program on [React]
 
 ### Commands
 
-1. Create Application: npm create-react-app the-awesome-app
+1. Create Application: npx create-react-app the-awesome-app
 2. Start Application: npm start
 
 ### Repositories
