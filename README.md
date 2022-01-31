@@ -24,7 +24,7 @@ Training Program on [React]
 
 ### Repositories
 
-1. Angular APP: https://github.com/aniljos/React-2022-Jan-31
+1. React APP: https://github.com/aniljos/React-2022-Jan-31
    
 
 
