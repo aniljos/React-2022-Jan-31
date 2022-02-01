@@ -1,0 +1,24 @@
+const numbers = [1,2,3,4,5,6,7];
+
+const sqaures = numbers.map((item, index) => {
+    return item * item;
+})
+
+console.log(numbers);
+console.log(sqaures);
+
+// ES6 spread operator(copy of an array or an object)
+const copy_of_numbers = [...numbers];
+console.log("copy_of_numbers", copy_of_numbers);
+numbers.push(100);
+console.log("nummbers", numbers);
+console.log("copy_of_numbers", copy_of_numbers);
+
+
+const new_array = [0,10,20, ...numbers, 90,91,91]
+console.log("new_array", new_array);
+
+
+const array = [{id:1}, {id: 2}]
+
+const copy_ofarray = [...array]
