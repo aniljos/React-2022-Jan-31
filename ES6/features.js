@@ -21,4 +21,31 @@ console.log("new_array", new_array);
 
 const array = [{id:1}, {id: 2}]
 
-const copy_ofarray = [...array]
+const copy_ofarray = [...array];
+
+//destructuring(ES6)==Object
+
+const emp = {
+    name: "anil", salary: 10000
+}
+
+//const name = emp.name;
+//const salary = emp.salary;
+
+const {name, salary} = emp;
+
+console.log("name", name);
+console.log("salary", salary);
+
+
+//destructuring(ES6)==Array
+
+const names = ["anil", "ashwin", "rahul"];
+
+//const name1 = names[0];
+//const name2 = names[1];
+
+const [name1, name2] = names;
+
+console.log("name1", name1);
+console.log("name2", name2);
