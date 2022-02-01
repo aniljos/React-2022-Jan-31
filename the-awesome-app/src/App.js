@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Hello from './components/Hello';
 import Counter from './components/Counter';
+import ListProducts from './components/products/ListProducts';
 
 function App() {
   return (
@@ -24,13 +25,15 @@ function App() {
           {/* <Hello message="React"/>
           <Hello message="JSX"/> */}
 
-          <Counter title="The Count"/>
-          <Counter title="Numbers"/>
+          {/* <Counter title="The Count"/>
+          <Counter title="Numbers"/> */}
+
+          <ListProducts/>
           
       </section>
-      <footer>
+      {/* <footer>
         This is a footer
-      </footer>
+      </footer> */}
     </div>
   );
 }

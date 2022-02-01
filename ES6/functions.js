@@ -52,4 +52,14 @@ const obj = {
     }
 }
 
-obj.print();
+//obj.print();
+
+
+const user ={
+    id: 200
+}
+
+//user.print();
+
+const fn = obj.print.bind(user);
+fn();
