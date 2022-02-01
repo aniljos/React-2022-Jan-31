@@ -69,6 +69,44 @@ class ListProducts extends PureComponent {
         });
     }
 
+    editUpdate = async (updatedProduct) => {
+        
+        console.log("editUpdate", updatedProduct);
+        try{
+
+            const updateUrl = this.url + "/" + updatedProduct.id;
+            const resp = await axios.put(updateUrl, updatedProduct);
+            const updateProducts = [...this.state.products];
+            const index = updateProducts.findIndex(item => item.id === updatedProduct.id);
+            if(index !== -1){
+                updateProducts[index]= updatedProduct;
+                this.setState({
+                    products: updateProducts,
+                    selectedProduct: null
+                });
+                alert("Product updated");
+            }
+
+        }
+        catch(err){
+            alert("Failed to updated");
+        }
+
+
+    }
+
+    editCancel = (message) => {
+        console.log("editCancel", message);
+
+        this.setState({
+
+            selectedProduct: null
+
+        }, () => {
+            alert("Edit Cancelled");
+        });
+    }
+
     renderProducts() {
         return this.state.products.map((item, index) => {
             return (
@@ -99,7 +137,10 @@ class ListProducts extends PureComponent {
 
                 <div>
                     {this.state.selectedProduct !== null ? 
-                                <EditProduct key={this.state.selectedProduct.id} product={this.state.selectedProduct} /> 
+                                <EditProduct key={this.state.selectedProduct.id} 
+                                            product={this.state.selectedProduct}
+                                            onUpdate={this.editUpdate}
+                                            onCancel={this.editCancel} /> 
                                 : null}
                 </div>
                 <br/><br/><br/><br/><br/>

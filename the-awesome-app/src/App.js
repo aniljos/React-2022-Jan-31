@@ -1,40 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
 import Hello from './components/Hello';
 import Counter from './components/Counter';
 import ListProducts from './components/products/ListProducts';
+import 'bootstrap/dist/css/bootstrap.css';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <section>
-          {/* <Hello message="React"/>
-          <Hello message="JSX"/> */}
+    <BrowserRouter>
+      <div >
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">React</a>
+            <ul className="nav">
+              <li className="nav-item">
+                <Link className="nav-link" to="/home">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/counter">Counter</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/products">Products</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">Login</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-          {/* <Counter title="The Count"/>
-          <Counter title="Numbers"/> */}
 
-          <ListProducts/>
-          
-      </section>
-      {/* <footer>
-        This is a footer
-      </footer> */}
-    </div>
+        <section>
+{/* 
+            <Route path="/home" >
+              <Hello message="Hello"/>
+            </Route> */}
+        </section>
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -30,10 +30,17 @@ class EditProduct extends Component{
     // }
     save = () => {
 
+        if(this.props.onUpdate){
+            this.props.onUpdate(this.state.product);
+        }
+        
+
     }
 
     cancel = () => {
-
+        if(this.props.onCancel){
+            this.props.onCancel("Update cancelled");
+        }
     }
 
     changeName = (evt) => {
