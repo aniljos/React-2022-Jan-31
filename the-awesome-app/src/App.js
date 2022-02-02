@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Search from './components/hooks/Search';
 import GadgetStore from './components/gadgets/GadgetStore';
+import ViewCart from './components/gadgets/ViewCart';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
                 <Link className="nav-link" to="/gadgets">Gadgets</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/cart">View Cart</Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/login">Login</Link>
               </li>
             </ul>
@@ -42,6 +46,7 @@ function App() {
                 <Route path="/products" component={ListProducts}/>
                 <Route path="/search" component={Search}/>
                 <Route path="/gadgets" component={GadgetStore}/>
+                <Route path="/cart" component={ViewCart}/>
             </Switch>
         </section>
       </div>

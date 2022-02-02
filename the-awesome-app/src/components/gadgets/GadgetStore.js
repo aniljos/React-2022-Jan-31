@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import {useDispatch} from 'react-redux';
 
 function GadgetStore(){
 
     const [products, setProducts] = useState([]);
+    const dispatch = useDispatch();
 
-    useEffect(async () => {
+    useEffect(() => {
+
+        fetchProducts();
+
+    }, []);
+
+    async function fetchProducts(){
 
         const url = process.env.REACT_APP_PRODUCTS_URL;
         try {
@@ -16,8 +24,14 @@ function GadgetStore(){
         } catch (error) {
             console.log(error);
         }
+    }
 
-    }, []);
+    function addToCart(product){
+
+
+        dispatch({type: "ADD_TO_CART", payload: {product, quantity: 1}});
+
+    }
 
 
     function renderProducts() {
@@ -30,7 +44,7 @@ function GadgetStore(){
                             <h5 className="card-title">{item.name}</h5>
                             <p className="card-text">{item.description}</p>
                             <p className="card-text text-primary">INR {item.price}</p>
-                            <button href="#" className="btn btn-primary">Add To Cart</button>
+                            <button href="#" className="btn btn-primary" onClick={() => addToCart(item)}>Add To Cart</button>
                         </div>
                     </div>
                 </div>
