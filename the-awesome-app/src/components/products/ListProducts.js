@@ -1,4 +1,4 @@
-import { Component, PureComponent } from 'react';
+import React, { Component, PureComponent } from 'react';
 import axios from 'axios';
 import './ListProducts.css';
 import EditProduct from './EditProduct';
@@ -10,6 +10,7 @@ class ListProducts extends PureComponent {
         selectedProduct: null
     }
     url = "";
+    editProductRef = React.createRef();
 
     constructor(props) {
         super(props);
@@ -125,6 +126,13 @@ class ListProducts extends PureComponent {
         })
     }
 
+    callChildFn = () => {
+        if(this.editProductRef.current){
+            console.log(this.editProductRef.current);
+            this.editProductRef.current.showProductDetails();
+        }
+    }
+
     render() {
         console.log("[ListProducts render]");
         return (
@@ -136,13 +144,19 @@ class ListProducts extends PureComponent {
                 </div>
 
                 <div>
+                    <button onClick={this.callChildFn}>Call Child Function</button>
+                </div>
+                <div>
                     {this.state.selectedProduct !== null ? 
-                                <EditProduct key={this.state.selectedProduct.id} 
+                                <EditProduct 
+                                            ref={this.editProductRef}
+                                            key={this.state.selectedProduct.id} 
                                             product={this.state.selectedProduct}
                                             onUpdate={this.editUpdate}
                                             onCancel={this.editCancel} /> 
                                 : null}
                 </div>
+                
                 <br/><br/><br/><br/><br/>
             </div>
         )
@@ -171,8 +185,6 @@ class ListProducts extends PureComponent {
     componentWillUnmount(){
         console.log("[ListProducts componentWillUnmount]");
     }
-
-
 }
 
 export default ListProducts;

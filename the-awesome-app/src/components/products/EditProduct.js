@@ -74,6 +74,10 @@ class EditProduct extends Component{
 
     }
 
+    showProductDetails(){
+        alert(this.state.product.id + ", " + this.state.product.name);
+    }
+
     render(){
 
         const {product} = this.state;

@@ -36,12 +36,14 @@ class Counter extends Component {
         const updatedCount = this.state.count + 1;
 
         //setState is asynchronous
-        //setState(slice of the new state, callback invoked after the state is update)
+        //setState(slice of the new state, callback invoked after the state is updated)
         this.setState({
             count: updatedCount
         }, () => {
             console.log(this.state);
         });
+
+
 
     }
 
