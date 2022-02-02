@@ -18,6 +18,18 @@ export const cartReducer = (currentState=initData, action)=> {
         }
 
     }
+    if(action.type === "RMV_FROM_CART"){
+
+        const updatedCart = [...currentState.cart];
+        const index = updatedCart.findIndex(item => item.product.id === action.payload.product.id);
+        if(index !== -1){
+            updatedCart.splice(index, 1);
+            return {
+                ...currentState,
+                cart: updatedCart
+            }
+        }
+    }
 
     return currentState;
 }

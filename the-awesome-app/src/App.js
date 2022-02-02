@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Search from './components/hooks/Search';
 import GadgetStore from './components/gadgets/GadgetStore';
 import ViewCart from './components/gadgets/ViewCart';
+import Login from './components/auth/Login';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
                 <Route path="/search" component={Search}/>
                 <Route path="/gadgets" component={GadgetStore}/>
                 <Route path="/cart" component={ViewCart}/>
+                <Route path="/login" component={Login}/>
             </Switch>
         </section>
       </div>
