@@ -11,10 +11,12 @@ class ListProducts extends PureComponent {
     }
     url = "";
     editProductRef = React.createRef();
+    //count = 0;
 
     constructor(props) {
         super(props);
-        this.url = "http://localhost:9000/products";
+        //this.url = "http://localhost:9000/products";
+        this.url = process.env.REACT_APP_PRODUCTS_URL;
         console.log("[ListProducts constructor]");
     }
 
