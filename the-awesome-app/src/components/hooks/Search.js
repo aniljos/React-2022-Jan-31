@@ -1,5 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
+import simpleHOC  from '../hoc/simpleHOC';
 
 function Search(){
 
@@ -108,4 +109,4 @@ function Search(){
     )
 }
 
-export default Search;
+export default simpleHOC(Search);

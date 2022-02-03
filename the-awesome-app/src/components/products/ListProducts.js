@@ -129,6 +129,8 @@ class ListProducts extends PureComponent {
     }
 
     callChildFn = () => {
+
+        //console.log(this.editProductRef.current);
         if(this.editProductRef.current){
             console.log(this.editProductRef.current);
             this.editProductRef.current.showProductDetails();

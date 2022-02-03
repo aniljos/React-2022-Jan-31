@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import {useHistory, useParams, useLocation} from 'react-router-dom';
+import Input from "../widgets/Input";
 
 function Login(props) {
 
@@ -12,6 +13,18 @@ function Login(props) {
     const history =  useHistory();
   //  const params = useParams();
     const location =  useLocation();
+    const userNameRef = useRef(null);
+
+
+    useEffect(() => {
+
+        if(userNameRef.current){
+            //console.log(userNameRef.current.inputRef);
+            //userNameRef.current.inputRef.current.focus();
+            userNameRef.current.focus();
+        }
+
+    },[])
 
     async function login() {
 
@@ -51,7 +64,13 @@ function Login(props) {
 
             {message ? <div className="alert alert-danger">{message}</div> : null}
 
-            <div className="form-group">
+            <Input ref={userNameRef}  label="User Name"  placeholder="UserName"
+                    value={userName} onChange={(e) => setUserName(e.target.value)}/>
+
+            <Input label="Password"  placeholder="******" type="password"
+                    value={password} onChange={(e) => setPassword(e.target.value)} />
+
+            {/* <div className="form-group">
                 <label>UserName</label>
                 <input className="form-control" placeholder="UserName"
                     value={userName} onChange={(e) => setUserName(e.target.value)} />
@@ -61,7 +80,11 @@ function Login(props) {
                 <label>Password</label>
                 <input className="form-control" placeholder="******" type="password"
                     value={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
+            </div> */}
+
+            
+
+
             <br />
             <div>
                 <button className="btn btn-success" onClick={login}>Login</button>
