@@ -11,7 +11,7 @@ function simpleHOC(component){
         //let ls = ""
 
         return (
-            <div style={{border: "2px solid red", margin: 7}}>
+            <div style={{border: "2px solid red", padding: "17px"}}>
                 <Component {...props} />
             </div>
         );

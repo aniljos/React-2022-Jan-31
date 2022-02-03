@@ -9,6 +9,11 @@ import ViewCart from './components/gadgets/ViewCart';
 import Login from './components/auth/Login';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import HooksDemo from './components/hooks/HooksDemo';
+import Logout from './components/auth/Logout';
+
+
+
+
 
 
 function App() {
@@ -46,7 +51,10 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to="/login">Login</Link>
               </li>
-             
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout">Logout</Link>
+              </li>
+              
             </ul>
           </div>
         </nav>
@@ -61,6 +69,8 @@ function App() {
                 <Route path="/cart" component={ViewCart}/>
                 <Route path="/hooks" component={HooksDemo}/>
                 <Route path="/login" component={Login}/>
+                <Route path="/logout" component={Logout}/>
+                
             </Switch>
         </section>
       </div>

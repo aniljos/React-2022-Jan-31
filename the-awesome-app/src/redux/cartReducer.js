@@ -2,7 +2,8 @@
 
 const initData = {
 
-    cart: []
+    cart: [],
+    products: []
 }
 
 export const cartReducer = (currentState=initData, action)=> {
@@ -29,6 +30,14 @@ export const cartReducer = (currentState=initData, action)=> {
                 ...currentState,
                 cart: updatedCart
             }
+        }
+    }
+
+    if(action.type == "SET_PRODUCTS"){
+
+        return {
+            ...currentState,
+            products: action.payload
         }
     }
 

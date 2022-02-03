@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
+import {createSetProductAction} from '../../redux/actionCreator';
 
 function GadgetStore(){
 
-    const [products, setProducts] = useState([]);
+    ///const [products, setProducts] = useState([]);
     const dispatch = useDispatch();
+    const products = useSelector(state => state.shop.products);
 
     useEffect(() => {
 
@@ -15,15 +17,18 @@ function GadgetStore(){
 
     async function fetchProducts(){
 
-        const url = process.env.REACT_APP_PRODUCTS_URL;
-        try {
+        // const url = process.env.REACT_APP_PRODUCTS_URL;
+        // try {
             
-            const resp = await axios.get(url);
-            setProducts(resp.data);
+        //     const resp = await axios.get(url);
+        //     setProducts(resp.data);
 
-        } catch (error) {
-            console.log(error);
-        }
+        // } catch (error) {
+        //     console.log(error);
+        // }
+
+        dispatch(createSetProductAction());
+
     }
 
     function addToCart(product){
