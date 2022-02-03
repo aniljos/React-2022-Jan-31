@@ -10,7 +10,9 @@ import Login from './components/auth/Login';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import HooksDemo from './components/hooks/HooksDemo';
 import Logout from './components/auth/Logout';
-
+import {useContext} from 'react';
+import { AppTheme } from './context/AppTheme';
+import ThemeSwitchButton from './context/ThemeSwitchButton';
 
 
 
@@ -18,12 +20,13 @@ import Logout from './components/auth/Logout';
 
 function App() {
 
-  
-
+  const theme = useContext(AppTheme);
+  console.log("theme", theme);
   return (
     <Router>
       <div className='container-fluid'>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        {/* <nav className="navbar navbar-expand-lg navbar-light bg-light"> */}
+        <nav className={`navbar navbar-expand-lg ${theme.state.mode === "dark" ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
           <div className="container-fluid">
             <a className="navbar-brand" href="#">React</a>
             <ul className="nav">
@@ -53,6 +56,9 @@ function App() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/logout">Logout</Link>
+              </li>
+              <li>
+                <ThemeSwitchButton/>
               </li>
               
             </ul>
