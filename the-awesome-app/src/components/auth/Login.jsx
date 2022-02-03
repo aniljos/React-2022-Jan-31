@@ -1,13 +1,17 @@
 import { useState } from "react";
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import {useHistory, useParams, useLocation} from 'react-router-dom';
 
-function Login() {
+function Login(props) {
 
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const dispatch = useDispatch();
+    const history =  useHistory();
+  //  const params = useParams();
+    const location =  useLocation();
 
     async function login() {
 
@@ -23,6 +27,10 @@ function Login() {
                     refreshToken: resp.data.refreshToken
                 }
             });
+            //debugger;
+            const searchParams = location.search;
+            const redirectUrl = searchParams ? searchParams.split("=")[1] : "/gadgets";
+            history.push(redirectUrl);
 
         } catch (error) {
 

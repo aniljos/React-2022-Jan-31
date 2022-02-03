@@ -7,8 +7,14 @@ import Search from './components/hooks/Search';
 import GadgetStore from './components/gadgets/GadgetStore';
 import ViewCart from './components/gadgets/ViewCart';
 import Login from './components/auth/Login';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import HooksDemo from './components/hooks/HooksDemo';
+
 
 function App() {
+
+  
+
   return (
     <Router>
       <div className='container-fluid'>
@@ -35,8 +41,12 @@ function App() {
                 <Link className="nav-link" to="/cart">View Cart</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/hooks">Hooks</Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/login">Login</Link>
               </li>
+             
             </ul>
           </div>
         </nav>
@@ -44,10 +54,12 @@ function App() {
             <Switch>
                 <Route path="/home" render={() => <Hello message="React" />}/>
                 <Route path="/counter" render={() => <Counter title="Counter" />}/>
-                <Route path="/products" component={ListProducts}/>
+                
                 <Route path="/search" component={Search}/>
-                <Route path="/gadgets" component={GadgetStore}/>
+                <ProtectedRoute path="/gadgets" component={GadgetStore}/>
+                <ProtectedRoute path="/products" component={ListProducts}/>
                 <Route path="/cart" component={ViewCart}/>
+                <Route path="/hooks" component={HooksDemo}/>
                 <Route path="/login" component={Login}/>
             </Switch>
         </section>

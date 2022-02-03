@@ -10,6 +10,7 @@ export const cartReducer = (currentState=initData, action)=> {
     if(action.type === "ADD_TO_CART"){
 
         const updatedCart = [...currentState.cart];
+        console.log("cart payload: ", action.payload);
         updatedCart.push(action.payload);
 
         return {
