@@ -5,11 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
-import { AppTheme } from './context/AppTheme';
+
 import AppThemeProvider from './context/AppThemeProvider';
 import AppErrorBoundary from './components/errors/AppErrorBoundary';
-
-
+import './axios/interceptors';
+import MuiApp from './MuiApp';
 
 
 ReactDOM.render(
@@ -17,7 +17,8 @@ ReactDOM.render(
     <AppErrorBoundary>
       <AppThemeProvider>
         <Provider store={store}>
-          <App />
+          {/* <App /> */}
+          <MuiApp/>
         </Provider>
       </AppThemeProvider>
     </AppErrorBoundary>
