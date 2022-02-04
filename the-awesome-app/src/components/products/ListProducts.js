@@ -4,7 +4,7 @@ import './ListProducts.css';
 import EditProduct from './EditProduct';
 import {connect} from 'react-redux';
 
-class ListProducts extends PureComponent {
+class ListProducts extends Component {
 
     state = {
         products: [],
@@ -119,7 +119,7 @@ class ListProducts extends PureComponent {
     renderProducts() {
         return this.state.products.map((item, index) => {
             return (
-                <div key={item.id} className='product'>
+                <div data-testid="product" key={item.id} className='product'>
                     <p>Id: {item.id}</p>
                     <p>Name: {item.name}</p>
                     <p>Description: {item.description}</p>

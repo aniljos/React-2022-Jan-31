@@ -50,7 +50,7 @@ function NavigationList(props) {
         <List>
             {routes.map((item, index) => {
                 return (
-                    <ListItem>
+                    <ListItem key={index}>
                         <ListItemButton onClick={() => navigate(item)}>
                             <ListItemIcon>
                                 {index % 2 === 0 ? <InboxIcon /> : <DraftsIcon />}
@@ -114,7 +114,24 @@ function MuiApp() {
                 </Grid>
                 <Grid item xs={12}>
                     <Switch>
-                        <Route path="/home" render={() => <Hello message="React" />} />
+
+                        {routes.map((item, index) => {
+
+                            if(item.secure){
+                                return (
+                                    <ProtectedRoute key={index} path={item.path} component={item.component} />
+                                )
+                            }
+                            else{
+                                return (
+                                    <Route key={index} path={item.path} component={item.component} />
+                                )
+                            }
+
+                        })}
+
+
+                        {/* <Route path="/home" render={() => <Hello message="React" />} />
                         <Route path="/counter" render={() => <Counter title="Counter" />} />
 
                         <Route path="/search" component={Search} />
@@ -124,7 +141,7 @@ function MuiApp() {
                         <Route path="/hooks" component={HooksDemo} />
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
-                        <Route path="/faulty" component={FaultyComponent} />
+                        <Route path="/faulty" component={FaultyComponent} /> */}
 
                     </Switch>
                 </Grid>

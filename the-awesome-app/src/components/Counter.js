@@ -100,12 +100,13 @@ class Counter extends Component {
 
                     <div>
                         {/* Controlled input */}
-                        Count: <input type="number" value={this.state.count} onChange={this.change}/>
+                        Count: <input type="number" 
+                                    value={this.state.count} onChange={this.change} placeholder="Count"/>
                     </div>
 
                     <div>
                         {/* Uncontrolled input */}
-                        Value: <input ref={this.inputRef} type="number"/> &nbsp; 
+                        Value: <input ref={this.inputRef} type="number" placeholder="Value"/> &nbsp; 
                         <button onClick={this.update}>Update</button> 
                     </div>
                 </div>

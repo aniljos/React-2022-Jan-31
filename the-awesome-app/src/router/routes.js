@@ -28,7 +28,7 @@ export const routes = [
     ,
     {
         name: "gadgets",
-        path: "/gedgets",
+        path: "/gadgets",
         component: GadgetStore,
         secure: true
     }

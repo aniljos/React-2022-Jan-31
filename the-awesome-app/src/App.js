@@ -1,6 +1,6 @@
 import Hello from './components/Hello';
 import Counter from './components/Counter';
-import ListProducts from './components/products/ListProducts';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Search from './components/hooks/Search';
@@ -10,12 +10,15 @@ import Login from './components/auth/Login';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import HooksDemo from './components/hooks/HooksDemo';
 import Logout from './components/auth/Logout';
-import {useContext} from 'react';
+import React, { Suspense, useContext } from 'react';
 import { AppTheme } from './context/AppTheme';
 import ThemeSwitchButton from './context/ThemeSwitchButton';
 import FaultyComponent from './components/errors/FaultyComponent';
 
+//import ListProducts from './components/products/ListProducts';
 
+//Dynamic import ==> ListProducts is in a seperate bundle
+const ListProducts = React.lazy(() => import('./components/products/ListProducts'));
 
 
 
@@ -24,7 +27,7 @@ function App() {
   const theme = useContext(AppTheme);
   console.log("theme", theme);
   return (
-    <Router>
+    <Router basename="/react/">
       <div className='container-fluid'>
         {/* <nav className="navbar navbar-expand-lg navbar-light bg-light"> */}
         <nav className={`navbar navbar-expand-lg ${theme.state.mode === "dark" ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
@@ -62,27 +65,32 @@ function App() {
                 <Link className="nav-link" to="/logout">Logout</Link>
               </li>
               <li>
-                <ThemeSwitchButton/>
+                <ThemeSwitchButton />
               </li>
-              
+
             </ul>
           </div>
         </nav>
         <section>
-            <Switch>
-                <Route path="/home" render={() => <Hello message="React" />}/>
-                <Route path="/counter" render={() => <Counter title="Counter" />}/>
-                
-                <Route path="/search" component={Search}/>
-                <ProtectedRoute path="/gadgets" component={GadgetStore}/>
-                <ProtectedRoute path="/products" component={ListProducts}/>
-                <Route path="/cart" component={ViewCart}/>
-                <Route path="/hooks" component={HooksDemo}/>
-                <Route path="/login" component={Login}/>
-                <Route path="/logout" component={Logout}/>
-                <Route path="/faulty" component={FaultyComponent}/>
-                
-            </Switch>
+          <Switch>
+            <Route path="/home" render={() => <Hello message="React" />} />
+            <Route path="/counter" render={() => <Counter title="Counter" />} />
+
+            <Route path="/search" component={Search} />
+            <ProtectedRoute path="/gadgets" component={GadgetStore} />
+
+            <Route path="/cart" component={ViewCart} />
+            <Route path="/hooks" component={HooksDemo} />
+            <Route path="/login" component={Login} />
+            <Route path="/logout" component={Logout} />
+            <Route path="/faulty" component={FaultyComponent} />
+
+            <Suspense fallback={<div>Loading...</div>}>
+              <ProtectedRoute path="/products" component={ListProducts} />
+            </Suspense>
+
+
+          </Switch>
         </section>
       </div>
     </Router>

@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import AppThemeProvider from './context/AppThemeProvider';
 import AppErrorBoundary from './components/errors/AppErrorBoundary';
 import './axios/interceptors';
-import MuiApp from './MuiApp';
+// import MuiApp from './MuiApp';
 
 
 ReactDOM.render(
@@ -17,8 +17,8 @@ ReactDOM.render(
     <AppErrorBoundary>
       <AppThemeProvider>
         <Provider store={store}>
-          {/* <App /> */}
-          <MuiApp/>
+          <App />
+          {/* <MuiApp/> */}
         </Provider>
       </AppThemeProvider>
     </AppErrorBoundary>
