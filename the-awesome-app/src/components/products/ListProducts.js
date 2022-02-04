@@ -2,6 +2,7 @@ import React, { Component, PureComponent } from 'react';
 import axios from 'axios';
 import './ListProducts.css';
 import EditProduct from './EditProduct';
+import {connect} from 'react-redux';
 
 class ListProducts extends PureComponent {
 
@@ -24,8 +25,13 @@ class ListProducts extends PureComponent {
 
         console.log("[ListProducts componentDidMount]");
         ///const url = "http://localhost:9000/products";
+        // Authorization : 'Bearer {theaccesstoken}'
+
+
+        const headers = { "Authorization": `Bearer ${this.props.auth.accessToken}`};
+
         axios
-            .get(this.url)
+            .get(this.url, {headers})
             .then((resp) => {
 
                 console.log("success", resp);
@@ -191,4 +197,10 @@ class ListProducts extends PureComponent {
     }
 }
 
-export default ListProducts;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth
+    }
+}
+
+export default connect(mapStateToProps)(ListProducts);

@@ -13,6 +13,7 @@ import Logout from './components/auth/Logout';
 import {useContext} from 'react';
 import { AppTheme } from './context/AppTheme';
 import ThemeSwitchButton from './context/ThemeSwitchButton';
+import FaultyComponent from './components/errors/FaultyComponent';
 
 
 
@@ -52,6 +53,9 @@ function App() {
                 <Link className="nav-link" to="/hooks">Hooks</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/faulty">Faulty</Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/login">Login</Link>
               </li>
               <li className="nav-item">
@@ -76,6 +80,7 @@ function App() {
                 <Route path="/hooks" component={HooksDemo}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/logout" component={Logout}/>
+                <Route path="/faulty" component={FaultyComponent}/>
                 
             </Switch>
         </section>
